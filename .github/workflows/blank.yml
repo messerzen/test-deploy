@@ -31,9 +31,14 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
           pip install pytest
+          
+      - name: Copy test to deploymentsfolder
+        run: |
+          cp -r tests ./project/main
+          ls ./project/main
 
 
       # Runs a set of commands using the runners shell
       - name: tests
         run: |
-          python -m pytest tests/
+          python -m pytest ./project/main/tests
