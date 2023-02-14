@@ -31,13 +31,16 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
           pip install pytest
-          pip install -e
+          pip install -e .
       #- name: Copy test to deploymentsfolder
       #  run: |
       #    cp -r tests ./project/main
       #    ls ./project/main
 
-
+      - name: freeze
+        run: |
+          pip freeze
+          
       # Runs a set of commands using the runners shell
       - name: tests
         run: |
