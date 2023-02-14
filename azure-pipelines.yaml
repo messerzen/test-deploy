@@ -1,0 +1,21 @@
+# Start pipeline
+
+trigger: none # removendo trigger por enquanto
+
+pool:
+  name: local
+
+steps:
+# TODO implementar testes
+
+  - script: |
+      python -m pip install --upgrade pip
+      pip install -r requirements.txt
+      pip install pytest pytest-azurepipelines
+      export PYTHONPATH='${PYTHONPATH}:$(Build.SourcesDirectory)/dags'
+      python -c "import sys; print(sys.path)"
+    displayName: 'Install dependencies'
+
+  - script: |
+      pytest tests
+    displayName: 'pytest'
