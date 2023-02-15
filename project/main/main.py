@@ -1,8 +1,5 @@
 import sys
 
-sys.path.append("C:/git/testing-integriry/modules_zen")
-# print(sys.path)
-
 from modules_zen.calculator import *
 
 def mySum(a, b):
